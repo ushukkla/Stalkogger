@@ -54,7 +54,7 @@ namespace Mail
 "\"""\r\n    }\r\ncatch\r\n    {\r\n        exit 4; \r\n    }";
 
  
-    #undef X_EM_TO
+    #undef X_EM_TO//remove current definition
     #undef X_EM_FROM
     #undef X_EM_PASS
 
