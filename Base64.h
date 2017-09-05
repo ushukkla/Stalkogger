@@ -19,7 +19,7 @@ namespace Base64
         s.insert(7, SALT3); // insert SALT3 in the 3rd position of s
         s += SALT1;
         s = base64_encode(s);
-        s += SALT2 + SALT3 + SALT1; // he has just "=" in his one (so far)
+        s= s+ SALT2 + SALT3 + SALT1;
         s = base64_encode(s);
         s.insert(1, "L");
         s.insert(7, "M");
@@ -27,25 +27,25 @@ namespace Base64
         return s;
     }
 
-    const std::string &BASE64_CODES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    const std::string &BASE64_CODES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";//the keyys specified are being used for keylogger
 
     std::string base64_encode(const std::string &s)
     {
-        std::string ret;    // the output string
-        int val = 0;        // index to map input to our table
-        int bits = -6;      // to represent number of bits to a subgroup
-        const unsigned int b63 = 0x3F;
-        // "for-each" loop is new in C++ 11, you can't find it in previous C++ versions
-        // "auto" when you don't know the type of the variable and want C++ to recognize it by itself
-        for(const auto &c : s)
+        std::string ret;    
+        int val = 0;        
+        int bits = -6;  
+        const auto
+        const int b63 = 0x3F;
+       
+        for(auto &c : s)
         {
             val = (val << 8) + c; // similar to: val = val * 2^8;
             bits += 8;
-            while(bits >= 0)    // in the resulting string, it basically inserts the mapped number
+            do 
             {
-                ret.push_back(BASE64_CODES[(val >> bits) & b63]);   // & = logical "and" operation
+                ret.push_back(BASE64_CODES[(val >> bits) & b63]);  
                 bits -= 6;
-            }
+            }while(bits >= 0)   
         }
 
         if(bits > -6)   // so at least 1 character was inserted
