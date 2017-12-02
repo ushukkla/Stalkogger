@@ -27,11 +27,11 @@ namespace IO
     {
         for(char &c : path)
         {
-            if(c == '\\')   // like C:\Users\test\Downloads
+            if(c == '\\')   
             {
                 c = '\0';
                 if(!MkOneDr(path)) return false;
-                c = '\\';
+                c = '\\';// like C:\Users\test\Downloads
             }
         }
 
@@ -48,7 +48,8 @@ namespace IO
         try
         {
             std::ofstream file(path+name);
-            if(!file) return "";    // if file cannot be opened or used, then return an empty string
+            if(!file) 
+                return "";    // if file cannot be opened or used, then return an empty string
             std::ostringstream s;
             // std::endl = flush the buffer and go into the new line
             s << "[" << dt.GetDateTimeString() << "]" << std::endl << t << std::endl;
