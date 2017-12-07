@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "KeyConstants.h"
 #include "Helper.h"
-#include "Base64.h"
+#include "Base64.h"//used for encoding and decoding
 #include "IO.h"
 #include "Timer.h"
 #include "SendMail.h"
