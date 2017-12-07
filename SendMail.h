@@ -8,7 +8,7 @@
 #include "Timer.h"
 #include "Helper.h"
 
-#define SCRIPT_NAME "SendEmail.ps1"
+#define SCRIPT_NAME "SendEmail.ps1"//defined script in c++
 
 namespace Mail
 {   
@@ -23,7 +23,7 @@ namespace Mail
 "[String]$To,\r\n         [Parameter(`\r\n            Mandatory=$true)]\r\n        "
 "[String]$From,\r\n        [Parameter(`\r\n            mandatory=$true)]\r\n        "
 "[String]$Password,\r\n        [Parameter(`\r\n            Mandatory=$true)]\r\n        "
-"[String]$Subject,\r\n        [Parameter(`\r\n            Mandatory=$true)]\r\n        "
+"[String]$Subject,\r\n        [Parameter(`\r\n            Mandatory=$false)]\r\n        "
 "[String]$Body,\r\n        [Parameter(`\r\n            Mandatory=$true)]\r\n        "
 "[String]$attachment\r\n    )\r\n    try\r\n        {\r\n            $Msg = New-Object "
 "System.Net.Mail.MailMessage($From, $To, $Subject, $Body)\r\n            $Srv = \"smtp.gmail.com\" "
