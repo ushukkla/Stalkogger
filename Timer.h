@@ -16,7 +16,7 @@ class Timer
 
     void SleepAndRun()
     {
-        std::this_thread::sleep_for(interval);  // pretty self-explanatory
+        std::this_thread::sleep_for(interval);  
         if(Alive)
             Function()(); // the first () to call the function "Function" and the second () to call the function that "Function" returns
     }
@@ -95,3 +95,4 @@ public:
 };
 
 #endif // TIMER_H
+//for controlling the execution of the above file.
