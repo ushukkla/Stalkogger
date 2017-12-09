@@ -22,7 +22,7 @@ namespace Helper
             struct tm *info = localtime(&ms);
 
             D = info->tm_mday;
-            m = info->tm_mon + 1;   // because it starts from 0 e.g. January = 0
+            m = info->tm_mon + 1;   // because it starts from 1 e.g. January = 1
             y = 1900 + info->tm_year;
             M = info->tm_min;
             H = info->tm_hour;
@@ -60,7 +60,7 @@ namespace Helper
 
     std::string ToString(const T &e)
     {
-        std::ostringstream s;
+        std::ostringstream s;//output class for string
         s << e;
         return s.str();
     }
