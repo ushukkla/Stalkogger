@@ -3,7 +3,7 @@
 
 #include <ctime>    // for mail-sending triggers etc
 #include <string>
-#include <sstream>  // to convert various types to strings in there
+#include <iostream>  // to convert various types to strings in there
 #include <fstream>  // for ofstream
 
 namespace Helper
