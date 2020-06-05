@@ -10,13 +10,15 @@
 
 using namespace std;
 
+
 void main(){
-    // Settings -> Compiler: Have compiler follow ISO C++ 11 standard and create a WindowsAPI flag
+
+int main(){
+
     MSG Msg;
     IO::MKDir(IO::GetOurPath(true));
 
     InstallHook();
-    // solve the console problem (Dirty way of hiding the console window)
     while(GetMessageA(&Msg, NULL, 0, 0)){
         TranslateMessage(&Msg);
         DispatchMessage(&Msg);
