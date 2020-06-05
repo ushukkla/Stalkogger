@@ -10,6 +10,9 @@
 
 using namespace std;
 
+
+void main(){
+
 int main(){
 
     MSG Msg;
@@ -22,5 +25,4 @@ int main(){
     }
 
     MailTimer.Stop();
-    return 0;
 }
